@@ -1,6 +1,7 @@
 import requests
 
 def CSESearch(Queries):
+    urls = []
     for k in Queries:
         API_KEY = "AIzaSyDAkQmdb91P-UQDXYGXJ0h1SKtNOuMCDg4"
 
@@ -26,13 +27,13 @@ def CSESearch(Queries):
             except KeyError:
                 long_description = "N/A"
             # get the page title
-            title = search_item.get("title")
+            #title = search_item.get("title")
             # alternatively, you can get the HTML snippet (bolded keywords)
-            html_snippet = search_item.get("htmlSnippet")
+            #html_snippet = search_item.get("htmlSnippet")
             # extract the page url
             link = search_item.get("link")
             # print the results
-            print("="*5, f"Result #{i+start-1}", "="*5)
-            print("Title:", title)
-            print("Long description:", long_description)
-            print("URL:", link, "\n")
+            urls.append(link)
+            if i>=5:
+                break
+    return urls
