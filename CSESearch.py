@@ -1,11 +1,18 @@
 import requests
 
-def CSESearch(Queries):
+def CSESearch(Queries, Language):
+    SEARCH_ENGINE_ID = "53fb634b0dd564827"
+    if(Language == "en"):
+        SEARCH_ENGINE_ID = "53fb634b0dd564827"
+    if(Language == "es"):
+        SEARCH_ENGINE_ID = "53fb634b0dd564827"
+    if(Language == "zh-TW"):
+        SEARCH_ENGINE_ID = "53fb634b0dd564827"
+    
+    
     urls = []
     for k in Queries:
         API_KEY = "AIzaSyDAkQmdb91P-UQDXYGXJ0h1SKtNOuMCDg4"
-
-        SEARCH_ENGINE_ID = "53fb634b0dd564827"
 
         query = k
 
@@ -34,6 +41,6 @@ def CSESearch(Queries):
             link = search_item.get("link")
             # print the results
             urls.append(link)
-            if i>=5:
+            if i>=5: #only have 5 results
                 break
     return urls
