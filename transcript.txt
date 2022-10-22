@@ -1,0 +1,589 @@
+The following content is provided under a Creative
+0:03Commons license. Your support will help MIT
+0:05OpenCourseWare continue to offer high quality educational
+0:08resources for free. To make a donation or to view
+0:13additional materials from hundreds of MIT courses,
+0:18visit MIT OpenCourseWare at ocw.mit.edu.
+0:25Last time we saw things about gradients and directional
+0:29derivatives. Before that we studied how to
+0:32look for minima and maxima of functions of several variables.
+0:37And today we are going to look again at min/max problems but in
+0:41a different setting, namely, one for variables that
+0:45are not independent. And so what we will see is you
+0:49may have heard of Lagrange multipliers.
+0:52And this is the one point in the term when I can shine with
+0:59my French accent and say Lagrange's name properly.
+1:05OK. What are Lagrange multipliers
+1:08about? Well, the goal is to minimize
+1:13or maximize a function of several variables.
+1:19Let's say, for example, f of x, y, z,
+1:22but where these variables are no longer independent.
+1:41They are not independent. That means that there is a
+1:43relation between them. The relation is maybe some
+1:47equation of the form g of x, y, z equals some constant.
+1:52You take the relation between x, y, z, you call that g and
+1:57that gives you the constraint. And your goal is to minimize f
+2:02only of those values of x, y, z that satisfy the
+2:05constraint. What is one way to do that?
+2:07Well, one to do that, if the constraint is very
+2:10simple, we can maybe solve for one of the variables.
+2:14Maybe we can solve this equation for one of the
+2:17variables, plug it back into f, and then we have a usual
+2:21min/max problem that we have seen how to do.
+2:25The problem is sometimes you cannot actually solve for x,
+2:28y, z in here because this condition is too complicated and
+2:31then we need a new method. That is what we are going to do.
+2:38Why would we care about that? Well, one example is actually
+2:41in physics. Maybe you have seen in
+2:43thermodynamics that you study quantities about gases,
+2:47and those quantities that involve pressure,
+2:50volume and temperature. And pressure,
+2:53volume and temperature are not independent of each other.
+2:56I mean you know probably the equation PV = NRT.
+2:59And, of course, there you could actually solve
+3:01to express things in terms of one or the other.
+3:03But sometimes it is more convenient to keep all three
+3:07variables but treat them as constrained.
+3:09It is just an example of a situation where you might want
+3:19to do this. Anyway, we will look mostly at
+3:24particular examples, but just to point out that this
+3:28is useful when you study guesses in physics.
+3:32The first observation is we cannot use our usual method of
+3:35looking for critical points of f.
+3:36Because critical points of f typically will not satisfy this
+3:40condition and so won't be good solutions.
+3:43We need something else. Let's look at an example,
+3:49and we will see how that leads us to the method.
+3:53For example, let's say that I want to find
+4:03the point closest to the origin -- -- on the hyperbola xy equals
+4:173 in the plane. That means I have this
+4:23hyperbola, and I am asking myself what is the point on it
+4:26that is the closest to the origin?
+4:29I mean we can solve this by elementary geometry,
+4:31we don't need actually Lagrange multipliers,
+4:34but we are going to do it with Lagrange multipliers because it
+4:38is a pretty good example. What does it mean?
+4:41Well, it means that we want to minimize distance to the origin.
+4:47What is the distance to the origin?
+4:49If I have a point, at coordinates (x,
+4:53y) and then the distance to the origin is square root of x
+4:58squared plus y squared. Well, do we really want to
+5:02minimize that or can we minimize something easier?
+5:05Yeah. Maybe we can minimize the
+5:06square of a distance. Let's forget this guy and
+5:14instead -- Actually, we will minimize f of x,
+5:23y equals x squared plus y squared,
+5:27that looks better, subject to the constraint xy =
+5:393. And so we will call this thing
+5:44g of x, y to illustrate the general method.
+5:50Let's look at a picture. Here you can see in yellow the
+5:58hyperbola xy equals three. And we are going to look for
+6:02the points that are the closest to the origin.
+6:05What can we do? Well, for example,
+6:08we can plot the function x squared plus y squared,
+6:13function f. That is the contour plot of f
+6:17with a hyperbola on top of it. Now let's see what we can do
+6:21with that. Well, let's ask ourselves,
+6:25for example, if I look at points where f
+6:30equals 20 now. I think I am at 20 but you
+6:34cannot really see it. That is a circle with a point
+6:37whose distant square is 20. Well, can I find a solution if
+6:41I am on the hyperbola? Yes, there are four points at
+6:44this distance. Can I do better?
+6:46Well, let's decrease for distance.
+6:49Yes, we can still find points on the hyperbola and so on.
+6:52Except if we go too low then there are no points on this
+6:56circle anymore in the hyperbola. If we decrease the value of f
+7:00that we want to look at that will somehow limit value beyond
+7:03which we cannot go, and that is the minimum of f.
+7:07We are trying to look for the smallest value of f that will
+7:13actually be realized on the hyperbola.
+7:17When does that happen? Well, I have to backtrack a
+7:20little bit. It seems like the limiting case
+7:23is basically here. It is when the circle is
+7:26tangent to the hyperbola. That is the smallest circle
+7:31that will hit the hyperbola. If I take a larger value of f,
+7:37I will have solutions. If I take a smaller value of f,
+7:39I will not have any solutions anymore.
+7:41So, that is the situation that we want to solve for.
+7:49How do we find that minimum? Well, a key observation that is
+7:54valid on this picture, and that actually remain true
+7:58in the completely general case, is that when we have a minimum
+8:03the level curve of f is actually tangent to our hyperbola.
+8:09It is tangent to the set of points where x,
+8:15y equals three, to the hyperbola.
+8:20Let's write that down. We observe that at the minimum
+8:32the level curve of f is tangent to the hyperbola.
+8:49Remember, the hyperbola is given by the equal g equals
+8:53three, so it is a level curve of g.
+8:56We have a level curve of f and a level curve of g that are
+8:59tangent to each other. And I claim that is going to be
+9:03the general situation that we are interested in.
+9:07How do we try to solve for points where this happens?
+9:28How do we find x, y where the level curves of f
+9:36and g are tangent to each other? Let's think for a second.
+9:47If the two level curves are tangent to each other that means
+9:51they have the same tangent line. That means that the normal
+9:57vectors should be parallel. Let me maybe draw a picture
+10:03here. This is the level curve maybe f
+10:06equals something. And this is the level curve g
+10:11equals constant. Here my constant is three.
+10:16Well, if I look for gradient vectors, the gradient of f will
+10:20be perpendicular to the level curve of f.
+10:23The gradient of g will be perpendicular to the level curve
+10:27of g. They don't have any reason to
+10:29be of the same size, but they have to be parallel to
+10:32each other. Of course, they could also be
+10:35parallel pointing in opposite directions.
+10:38But the key point is that when this happens the gradient of f
+10:48is parallel to the gradient of g.
+10:54Well, let's check that. Here is a point.
+11:03And I can plot the gradient of f in blue.
+11:05The gradient of g in yellow. And you see,
+11:08in most of these places, somehow the two gradients are
+11:12not really parallel. Actually, I should not be
+11:14looking at random points. I should be looking only on the
+11:17hyperbola. I want points on the hyperbola
+11:19where the two gradients are parallel.
+11:22Well, when does that happen? Well, it looks like it will
+11:28happen here. When I am at a minimum,
+11:31the two gradient vectors are parallel.
+11:34It is not really proof. It is an example that seems to
+11:37be convincing. So far things work pretty well.
+11:43How do we decide if two vectors are parallel?
+11:46Well, they are parallel when they are proportional to each
+11:50other. You can write one of them as a
+11:54constant times the other one, and that constant usually one
+12:02uses the Greek letter lambda. I don't know if you have seen
+12:07it before. It is the Greek letter for L.
+12:10And probably, I am sure, it is somebody's
+12:15idea of paying tribute to Lagrange by putting an L in
+12:22there. Lambda is just a constant.
+12:25And we are looking for a scalar lambda and points x and y where
+12:31this holds. In fact,
+12:33what we are doing is replacing min/max problems in two
+12:37variables with a constraint between them by a set of
+12:41equations involving, you will see, three variables.
+12:47We had min/max with two variables x, y,
+12:54but no independent. We had a constraint g of x,
+13:00y equals constant. And that becomes something new.
+13:06That becomes a system of equations where we have to
+13:12solve, well, let's write down what it means for gradient f to
+13:19be proportional to gradient g. That means that f sub x should
+13:26be lambda times g sub x, and f sub y should be lambda
+13:32times g sub y. Because the gradient vectors
+13:36here are f sub x, f sub y and g sub x,
+13:39g sub y. If you have a third variable z
+13:43then you have also an equation f sub z equals lambda g sub z.
+13:49Now, let's see. How many unknowns do we have in
+13:53these equations? Well, there is x,
+13:55there is y and there is lambda. We have three unknowns and have
+14:01only two equations. Something is missing.
+14:06Well, I mean x and y are not actually independent.
+14:10They are related by the equation g of x,
+14:14y equals c, so we need to add the constraint g equals c.
+14:21And now we have three equations involving three variables.
+14:26Let's see how that works. Here remember we have f equals
+14:39x squared y squared and g = xy. What is f sub x?
+14:45It is going to be 2x equals lambda times,
+14:52what is g sub x, y.
+14:55Maybe I should write here f sub x equals lambda g sub x just to
+14:59remind you. Then we have f sub y equals
+15:03lambda g sub y. F sub y is 2y equals lambda
+15:10times g sub y is x. And then our third equation g
+15:18equals c becomes xy equals three.
+15:22So, that is what you would have to solve.
+15:26Any questions at this point? No.
+15:33Yes? How do I know the direction of
+15:44a gradient? Do you mean how do I know that
+15:47it is perpendicular to a level curve?
+15:50Oh, how do I know if it points in that direction on the
+15:54opposite one? Well, that depends.
+15:56I mean we'd seen in last time, but the gradient is
+15:59perpendicular to the level and points towards higher values of
+16:02a function. So it could be -- Wait.
+16:05What did I have? It could be that my gradient
+16:08vectors up there actually point in opposite directions.
+16:11It doesn't matter to me because it will still look the same in
+16:15terms of the equation, just lambda will be positive or
+16:18negative, depending on the case. I can handle both situations.
+16:22It's not a problem. I can allow lambda to be
+16:30positive or negative. Well, in this example,
+16:34it looks like lambda will be positive.
+16:35If you look at the picture on the plot.
+16:38Yes? Well, because actually they are
+16:48not equal to each other. If you look at this point where
+16:51the hyperbola and the circle touch each other,
+16:55first of all, I don't know which circle I am
+16:58going to look at. I am trying to solve,
+17:01actually, for the radius of the circle.
+17:04I am trying to find what the minimum value of f is.
+17:07And, second, at that point,
+17:10the value of f and the value of g are not equal.
+17:14g is equal to three because I want the hyperbola x equals
+17:17three. The value of f will be the
+17:19square of a distance, whatever that is.
+17:22I think it will end up being 6, but we will see.
+17:27So, you cannot really set them equal because you don't know
+17:29what f is equal to in advance. Yes?
+17:45Not quite. Actually, here I am just using
+17:49this idea of finding a point closest to the origin to
+17:52illustrate an example of a min/max problem.
+17:55The general problem we are trying to solve is minimize f
+17:59subject to g equals constant. And what we are going to do for
+18:03that is we are really going to say instead let's look at places
+18:07where gradient f and gradient g are parallel to each other and
+18:10solve for equations of that. I think we completely lose the
+18:14notion of closest point if we just look at these equations.
+18:19We don't really say anything about closest points anymore.
+18:21Of course, that is what they mean in the end.
+18:24But, in the general setting, there is no closest point
+18:28involved anymore. OK.
+18:31Yes? Yes.
+18:40It is always going to be the case that,
+18:43at the minimum, or at the maximum of a function
+18:46subject to a constraint, the level curves of f and the
+18:49level curves of g will be tangent to each other.
+18:52That is the basis for this method.
+18:54I am going to justify that soon. It could be minimum or maximum.
+19:00In three-dimensions it could even be a saddle point.
+19:02And, in fact, I should say in advance,
+19:03this method will not tell us whether it is a minimum or a
+19:06maximum. We do not have any way of
+19:08knowing, except for testing values.
+19:10We cannot use second derivative tests or anything like that.
+19:13I will get back to that. Yes?
+19:21Yes. Here you can set y equals to
+19:23favor x. Then you can minimize x squared
+19:26plus nine over x squared. In general, if I am trying to
+19:30solve a more complicated problem, I might not be able to
+19:33solve. I am doing an example where,
+19:35indeed, here you could solve and remove one variable,
+19:38but you cannot always do that. And this method will still work.
+19:41The other one won't. OK.
+19:47I don't see any other questions. Are there any other questions?
+19:53No. OK.
+19:56I see a lot of students stretching and so on,
+20:02so it is very confusing for me. How do we solve these equations?
+20:08Well, the answer is in general we might be in deep trouble.
+20:14There is no general method for solving the equations that you
+20:18get from this method. You just have to think about
+20:21them. Sometimes it will be very easy.
+20:25Sometimes it will be so hard that you cannot actually do it
+20:28without the computer. Sometimes it will be just hard
+20:31enough to be on Part B of this week's problem set.
+20:50I claim in this case we can actually do it without so much
+20:56trouble, because actually we can think of this as a two by two
+21:03linear system in x and y. Well, let me do something.
+21:10Let me rewrite the first two equations as 2x - lambda y = 0.
+21:18And lambda x - 2y = 0. And xy = 3.
+21:30That is what we want to solve. Well, I can put this into
+21:36matrix form. Two minus lambda,
+21:41lambda minus two times x, y equals 0,0.
+21:48Now, how do I solve a linear system matrix times x,
+21:52y equals zero? Well, I always have an obvious
+21:54solution. X and y both equal to zero.
+21:56Is that a good solution? No, because zero times zero is
+22:02not three. We want another solution,
+22:07the trivial solution. 0,0 does not solve the
+22:14constraint equation xy equals three, so we want another
+22:20solution. When do we have another
+22:24solution? Well, when the determinant of a
+22:29matrix is zero. We have other solutions that
+22:37exist only if determinant of a matrix is zero.
+22:46M is this guy. Let's compute the determinant.
+23:01Well, that seems to be negative four plus lambda squared.
+23:08That is zero exactly when lambda squared equals four,
+23:15which is lambda is plus or minus two.
+23:20Already you see here it is a the level of difficulty that is
+23:25a little bit much for an exam but perfectly fine for a problem
+23:30set or for a beautiful lecture like this one.
+23:33How do we deal with -- Well, we have two cases to look at.
+23:37Lambda equals two or lambda equals minus two.
+23:40Let's start with lambda equals two.
+23:43If I set lambda equals two, what does this equation become?
+23:47Well, it becomes x equals y. This one becomes y equals x.
+23:53Well, they seem to be the same. x equals y.
+23:57And then the equation xy equals three becomes,
+24:01well, x squared equals three. I have two solutions.
+24:06One is x equals root three and, therefore, y equals root three
+24:15as well, or negative root three and negative root three.
+24:23Let's look at the other case. If I set lambda equal to
+24:26negative two then I get 2x equals negative 2y.
+24:30That means x equals negative y. The second one,
+24:372y equals negative 2x. That is y equals negative x.
+24:40Well, that is the same thing. And xy equals three becomes
+24:45negative x squared equals three. Can we solve that?
+24:51No. There are no solutions here.
+24:58Now we have two candidate points which are these two
+25:03points, root three, root three or negative root
+25:07three, negative root three. OK.
+25:13Let's actually look at what we have here.
+25:16Maybe you cannot read the coordinates, but the point that
+25:20I have here is indeed root three, root three.
+25:23How do we see that lambda equals two?
+25:26Well, if you look at this picture, the gradient of f,
+25:29that is the blue vector, is indeed twice the yellow
+25:32vector, gradient g. That is where you read the
+25:36value of lambda. And we have the other solution
+25:41which is somewhere here. Negative root three,
+25:45negative root there. And there, again,
+25:48lambda equals two. The two vectors are
+25:51proportional by a factor of two. Yes?
+25:59No, solutions are not quite guaranteed to be absolute minima
+26:01or maxima. They are guaranteed to be
+26:03somehow critical points end of a constraint.
+26:06That means if you were able to solve and eliminate the variable
+26:09that would be a critical point. When you have the same problem,
+26:12as we have critical points, are they maxima or minima?
+26:14And the answer is, well, we won't know until we
+26:22check. More questions?
+26:28No. Yes?
+26:32What is a Lagrange multiplier? Well, it is this number lambda
+26:36that is called the multiplier here.
+26:39It is a multiplier because it is what you have to multiply
+26:44gradient of g by to get gradient of f.
+26:48It multiplies.
+27:04Let's try to see why is this method valid?
+27:11Because so far I have shown you pictures and have said see they
+27:18are tangent. But why is it that they have to
+27:23be tangent in general? Let's think about it.
+27:28Let's say that we are at constrained min or max.
+27:37What that means is that if I move on the level g equals
+27:42constant then the value of f should only increase or only
+27:46decrease. But it means,
+27:49in particular, to first order it will not
+27:53change. At an unconstrained min or max,
+27:56partial derivatives are zero. In this case,
+27:59derivatives are zero only in the allowed directions.
+28:02And the allowed directions are those that stay on the levels of
+28:09this g equals constant. In any direction along the
+28:21level set g = c the rate of change of f must be zero.
+28:40That is what happens at minima or maxima.
+28:44Except here, of course, we look only at the
+28:49allowed directions. Let's say the same thing in
+28:54terms of directional derivatives.
+29:23That means for any direction that is tangent to the
+29:35constraint level g equal c, we must have df over ds in the
+29:49direction of u equals zero. I will draw a picture.
+30:00Let's say now I am in three variables just to give you
+30:05different examples. Here I have a level surface g
+30:09equals c. I am at my point.
+30:11And if I move in any direction that is on the level surface,
+30:18so I move in the direction u tangent to the level surface,
+30:24then the rate of change of f in that direction should be zero.
+30:32Now, remember what the formula is for this guy.
+30:34Well, we have seen that this guy is actually radiant f dot u.
+30:44That means any such vector u must be perpendicular to the
+30:58gradient of f. That means that the gradient of
+31:05f should be perpendicular to anything that is tangent to this
+31:10level. That means the gradient of f
+31:12should be perpendicular to the level set.
+31:16That is what we have shown.
+31:37But we know another vector that is also perpendicular to the
+31:40level set of g. That is the gradient of g.
+31:57We conclude that the gradient of f must be parallel to the
+32:02gradient of g because both are perpendicular to the level set
+32:07of g. I see confused faces,
+32:09so let me try to tell you again where that comes from.
+32:13We said if we had a constrained minimum or maximum,
+32:16if we move in the level set of g, f doesn't change.
+32:19Well, it doesn't change to first order.
+32:20It is the same idea as when you are looking for a minimum you
+32:24set the derivative equal to zero.
+32:26So the derivative in any direction, tangent to g equals
+32:31c, should be the directional derivative of f,
+32:34in any such direction, should be zero.
+32:38That is what we mean by critical point of f.
+32:43And so that means that any vector u, any unit vector
+32:48tangent to the level set of g is going to be perpendicular to the
+32:55gradient of f. That means that the gradient of
+33:00f is perpendicular to the level set of g.
+33:04If you want, that means the level sets of f
+33:06and g are tangent to each other. That is justifying what we have
+33:10observed in the picture that the two level sets have to be
+33:15tangent to each other at the prime minimum or maximum.
+33:20Does that make a little bit of sense?
+33:23Kind of. I see at least a few faces
+33:28nodding so I take that to be a positive answer.
+33:35Since I have been asked by several of you,
+33:39how do I know if it is a maximum or a minimum?
+33:43Well, warning, the method doesn't tell whether
+33:57a solution is a minimum or a maximum.
+34:09How do we do it? Well, more bad news.
+34:13We cannot use the second derivative test.
+34:26And the reason for that is that we care actually only about
+34:30these specific directions that are tangent to variable of g.
+34:34And we don't want to bother to try to define directional second
+34:39derivatives. Not to mention that actually it
+34:42wouldn't work. There is a criterion but it is
+34:45much more complicated than that. Basically, the answer for us is
+34:49that we don't have a second derivative test in this
+34:52situation. What are we left with?
+34:54Well, we are just left with comparing values.
+34:57Say that in this problem you found a point where f equals
+35:00three, a point where f equals nine, a point where f equals 15.
+35:04Well, then probably the minimum is the point where f equals
+35:08three and the maximum is 15. Actually, in this case,
+35:12where we found minima, these two points are tied for
+35:17minimum. What about the maximum?
+35:19What is the maximum of f on the hyperbola?
+35:22Well, it is infinity because the point can go as far as you
+35:25want from the origin. But the general idea is if we
+35:29have a good reason to believe that there should be a minimum,
+35:35and it's not like at infinity or something weird like that,
+35:38then the minimum will be a solution of the Lagrange
+35:42multiplier equations. We just look for all the
+35:46solutions and then we choose the one that gives us the lowest
+35:51value. Is that good enough?
+35:55Let me actually write that down.
+36:23To find the minimum or the maximum, we compare values of f
+36:35at the various solutions -- -- to Lagrange multiplier
+36:46equations.
+37:08I should say also that sometimes you can just conclude
+37:11by thinking geometrically. In this case,
+37:14when it is asking you which point is closest to the origin
+37:18you can just see that your answer is the correct one.
+37:23Let's do an advanced example. Advanced means that -- Well,
+37:32this one I didn't actually dare to put on top of the other
+37:37problem sets. Instead, I am going to do it.
+37:48What is this going to be about? We are going to look for a
+37:51surface minimizing pyramid. Let's say that we want to build
+38:03a pyramid with a given triangular base -- -- and a
+38:19given volume. Say that I have maybe in the x,
+38:28y plane I am giving you some triangle.
+38:33And I am going to try to build a pyramid.
+38:40Of course, I can choose where to put the top of a pyramid.
+38:48This guy will end up being behind now.
+38:53And the constraint and the goal is to minimize the total surface
+39:09area. The first time I taught this
+39:13class, it was a few years ago, was just before they built the
+39:15Stata Center. And then I used to motivate
+39:17this problem by saying Frank Gehry has gone crazy and has
+39:20been given a triangular plot of land he wants to put a pyramid.
+39:23There needs to be the right amount of volume so that you can
+39:26put all the offices in there. And he wants it to be,
+39:28actually, covered in solid gold.
+39:31And because that is expensive, the administration wants him to
+39:34cut the costs a bit. And so you have to minimize the
+39:38total size so that it doesn't cost too much.
+39:42We will see if MIT comes up with a triangular pyramid
+39:45building. Hopefully not.
+39:48It could be our next dorm, you never know.
+39:58Anyway, it is a fine geometry problem.
+40:01Let's try to think about how we can do this.
+40:07The natural way to think about it would be -- Well,
+40:10what do we have to look for first?
+40:11We have to look for the position of that top point.
+40:18Remember we know that the volume of a pyramid is one-third
+40:29the area of base times height. In fact, fixing the volume,
+40:37knowing that we have fixed the area of a base,
+40:39means that we are fixing the height of the pyramid.
+40:43The height is completely fixed. What we have to choose just is
+40:47where do we put that top point? Do we put it smack in the
+40:52middle of a triangle or to a side or even anywhere we want?
+40:58Its z coordinate is fixed. Let's call h the height.
+41:15What we could do is something like this.
+41:20We say we have three points of a base.
+41:24Let's call them p1 at (x1, y1,0); p2 at (x2,
+41:32y2,0); p3 at (x3, y3,0).
+41:36This point p is the unknown point at (x, y,
+41:40h). We know the height.
+41:42And then we want to minimize the sum of the areas of these
+41:46three triangles. One here, one here and one at
+41:50the back. And areas of triangles we know
+41:53how to express by using length of cross-product.
+41:57It becomes a function of x and y.
+42:00And you can try to minimize it. Actually, it doesn't quite work.
+42:04The formulas are just too complicated.
+42:05You will never get there. What happens is actually maybe
+42:14we need better coordinates. Why do we need better
+42:18coordinates? That is because the geometry is
+42:21kind of difficult to do if you use x, y coordinates.
+42:24I mean formula for cross-product is fine,
+42:28but then the length of the vector will be annoying and just
+42:33doesn't look good. Instead, let's think about it
+42:37differently.
+42:54I claim if we do it this way and we express the area as a
+43:01function of x, y, well, actually we can't
+43:06solve for a minimum. Here is another way to do it.
+43:13Well, what has worked pretty well for us so far is this
+43:17geometric idea of base times height.
+43:19So let's think in terms of the heights of side triangles.
+43:29I am going to use the height of these things.
+43:37And I am going to say that the area will be the sum of three
+43:43terms, which are three bases times three heights.
+43:48Let's give names to these quantities.
+43:53Actually, for that it is going to be good to have the point in
+43:58the xy plane that lives directly below p.
+44:01Let's call it q. P is the point that coordinates
+44:08x, y, h. And let's call q the point that
+44:13is just below it and so it' coordinates are x,
+44:19y, 0. Let's see.
+44:22Let me draw a map of this thing. p1, p2, p3 and I have my point
+44:34q in the middle. Let's see.
+44:37To know these areas, I need to know the base.
+44:40Well, the base I can decide that I know it because it is
+44:44part of my given data. I know the sides of this
+44:48triangle. Let me call the lengths a1,
+44:53a2, a3. I also need to know the height,
+44:56so I need to know these lengths.
+44:58How do I know these lengths? Well, its distance in space,
+45:01but it is a little bit annoying.
+45:03But maybe I can reduce it to a distance in the plane by looking
+45:10instead at this distance here. Let me give names to the
+45:17distances from q to the sides. Let's call u1,
+45:24u2, u3 the distances from q to the sides.
+45:47Well, now I can claim I can find, actually,
+45:49sorry. I need to draw one more thing.
+45:53I claim I have a nice formula for the area,
+45:57because this is vertical and this is horizontal so this
+46:01length here is u3, this length here is h.
+46:05So what is this length here? It is the square root of u3
+46:13squared plus h squared. And similarly for these other
+46:17guys. They are square roots of a u
+46:23squared plus h squared. The heights of the faces are
+46:31square root of u1 squared times h squared.
+46:36And similarly with u2 and u3. So the total side area is going
+46:43to be the area of the first faces,
+46:47one-half of base times height, plus one-half of a base times a
+46:58height plus one-half of the third one.
+47:06It doesn't look so much better. But, trust me,
+47:09it will get better. Now, that is a function of
+47:15three variables, u1, u2, u3.
+47:19And how do we relate u1, u2, u3 to each other?
+47:22They are probably not independent.
+47:25Well, let's cut this triangle here into three pieces like
+47:32that. Then each piece has side --
+47:35Well, let's look at it the piece of the bottom.
+47:40It has base a3, height u3. Cutting base into three tells
+47:50you that the area of a base is one-half of a1,
+47:57u1 plus one-half of a2, u2 plus one-half of a3,
+48:04u3. And that is our constraint.
+48:09My three variables, u1, u2, u3, are constrained in
+48:12this way. The sum of this figure must be
+48:14the area of a base. And I want to minimize that guy.
+48:17So that is my g and that guy here is my f.
+48:23Now we try to apply our Lagrange multiplier equations.
+48:28Well, partial f of a partial u1 is -- Well,
+48:33if you do the calculation, you will see it is one-half a1,
+48:36u1 over square root of u1^2 plus h^2 equals lambda,
+48:43what is partial g, partial a1?
+48:46That one you can do, I am sure. It is one-half a1.
+48:50Oh, these guys simplify. If you do the same with the
+49:00second one -- -- things simplify again.
+49:09And the same with the third one. Well, you will get,
+49:17after simplifying, u3 over square root of u3
+49:21squared plus h squared equals lambda.
+49:24Now, that means this guy equals this guy equals this guy.
+49:27They are all equal to lambda. And, if you think about it,
+49:33that means that u1 = u2 = u3. See, it looked like scary
+49:39equations but the solution is very simple.
+49:42What does it mean? It means that our point q
+49:45should be equidistant from all three sides.
+49:47That is called the incenter. Q should be in the incenter.
+49:52The next time you have to build a golden pyramid and don't want
+49:56to go broke, well, you know where to put the top.
+49:59If that was a bit fast, sorry. Anyway, it is not completely
+50:03crucial. But go over it and you will see
+50:06it works. Have a nice weekend.
