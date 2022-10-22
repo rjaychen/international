@@ -3,7 +3,7 @@ import requests
 def CSESearch(Queries, Language):
     SEARCH_ENGINE_ID = "53fb634b0dd564827"
     if(Language == "en"):
-        SEARCH_ENGINE_ID = "53fb634b0dd564827"
+        SEARCH_ENGINE_ID = "746fa251ea3354591"
     if(Language == "es"):
         SEARCH_ENGINE_ID = "53fb634b0dd564827"
     if(Language == "zh-TW"):
@@ -41,6 +41,6 @@ def CSESearch(Queries, Language):
             link = search_item.get("link")
             # print the results
             urls.append(link)
-            if i>=5: #only have 5 results
+            if i>=8: #only have 5 results
                 break
     return urls
