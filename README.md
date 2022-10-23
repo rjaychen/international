@@ -1,1 +1,1 @@
-YO 
+This is a application made at HackDuke to sort through lectures transcripts/paragraphs. It filters the keywords of the input and returns the most relevent educational resources, filtired through a pool of open course ware websites using google custom search engines. In order to run locally on a computer, run main.py, and input the lecture audio/transcript into the website https://ryanjchen.wixsite.com/noto. 
