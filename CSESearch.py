@@ -24,7 +24,6 @@ def CSESearch(Queries, Language):
         url = f"https://www.googleapis.com/customsearch/v1?key={API_KEY}&cx={SEARCH_ENGINE_ID}&q={query}&start={start}"
 
         data = requests.get(url).json()
-
         # get the result items
         search_items = data.get("items")
         # iterate over 5 results found
