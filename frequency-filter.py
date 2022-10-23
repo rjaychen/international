@@ -7,7 +7,8 @@ kw_model = KeyBERT()
 
 
 
-def filter_stopwords(text_pathname: str) -> str:
+def frequency_filter_stopwords(text_pathname: str) -> list:
+    list_of_keywords = []
     with open(text_pathname) as f:
         transcript = f.read()
     stop_words = set(stopwords.words('english'))
@@ -22,8 +23,13 @@ def filter_stopwords(text_pathname: str) -> str:
     for w in word_tokens:
         if w not in stop_words:
             filtered_sentence.append(w)
-    return kw_model.extract_keywords(transcript, keyphrase_ngram_range=(3, 3), stop_words=stop_words,
-                              use_maxsum=True, nr_candidates=20, top_n=5)
+    keywords = kw_model.extract_keywords(transcript, keyphrase_ngram_range=(3, 3), stop_words=stop_words, use_maxsum=True, nr_candidates=20, top_n=5)
+    for tup in keywords:
+        list_of_keywords.append(tup[0])
+    return list_of_keywords
+
+
+    
 
 
 
