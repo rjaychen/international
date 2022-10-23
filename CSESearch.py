@@ -12,7 +12,7 @@ def CSESearch(Queries, Language):
     
     urls = []
     for k in Queries:
-        API_KEY = "AIzaSyDAkQmdb91P-UQDXYGXJ0h1SKtNOuMCDg4"
+        API_KEY = "AIzaSyBsDDygKnCETfOOWthuK9JxXB8DfwSKV9A"
 
         query = k
 
@@ -24,10 +24,11 @@ def CSESearch(Queries, Language):
         url = f"https://www.googleapis.com/customsearch/v1?key={API_KEY}&cx={SEARCH_ENGINE_ID}&q={query}&start={start}"
 
         data = requests.get(url).json()
-
+        print(data)
         # get the result items
         search_items = data.get("items")
         # iterate over 5 results found
+        print(search_items)
         for i, search_item in enumerate(search_items, start=1):
             try:
                 long_description = search_item["pagemap"]["metatags"][0]["og:description"]
@@ -41,4 +42,6 @@ def CSESearch(Queries, Language):
             link = search_item.get("link")
             # print the results
             urls.append(link)
+            if i>=8: #only have 5 results
+                break
     return urls
