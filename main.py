@@ -31,10 +31,9 @@ def find_frequency(input: list):
 
 
 stop_words = set(stopwords.words('english'))
-stop_words.add(",")
-stop_words.add(".")
-stop_words.add("ok")
-stop_words.add(".")
+stop_words_array = [",", ".", "ok", ".", "introduction", "textbook", "lecture", "lectures", "textbooks", "courses", "lectures of"]
+for i in stop_words_array:
+    stop_words.add(i)
 
 
 with open("transcript.txt") as f:
@@ -42,14 +41,16 @@ with open("transcript.txt") as f:
 example_sent = transcript.lower()
 to_sort = find_frequency(filter_stopwords(example_sent))
 keywords = kw_model.extract_keywords(example_sent)
-words = kw_model.extract_keywords(example_sent, keyphrase_ngram_range=(2, 2), stop_words=None)
+words = kw_model.extract_keywords(example_sent, keyphrase_ngram_range=(1, 3), stop_words=None)
 
 searchquotes = []
 for i in words:
     searchquotes.append(i[0])
+    print(i[0])
 language = "en"
 
 urls = CSESearch(searchquotes, language)
 URLOutput = TopFiveCommon(urls)
+
 
 print(URLOutput)

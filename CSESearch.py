@@ -41,6 +41,4 @@ def CSESearch(Queries, Language):
             link = search_item.get("link")
             # print the results
             urls.append(link)
-            if i>=8: #only have 5 results
-                break
     return urls
