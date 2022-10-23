@@ -5,14 +5,14 @@ def CSESearch(Queries, Language):
     if(Language == "en"):
         SEARCH_ENGINE_ID = "746fa251ea3354591"
     if(Language == "es"):
-        SEARCH_ENGINE_ID = "53fb634b0dd564827"
+        SEARCH_ENGINE_ID = "f317c1554c49a487c"
     if(Language == "zh-TW"):
         SEARCH_ENGINE_ID = "53fb634b0dd564827"
     
     
     urls = []
     for k in Queries:
-        API_KEY = "AIzaSyDAkQmdb91P-UQDXYGXJ0h1SKtNOuMCDg4"
+        API_KEY = "AIzaSyBPbbZVAapo_FQh_SnlUBFJhPLKQ_ya-AU"
 
         query = k
 
