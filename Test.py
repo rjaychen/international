@@ -6,13 +6,15 @@ from google_translate import sourceTranslate
 
 
 
-KeyWords = ["hello", "Goodbye", "Sorry"]
-words = KeyWords
-for i, KeyWords in enumerate(KeyWords):
-    words[i] = sourceTranslate(KeyWords, "en", "zh-tw")
+# KeyWords = ["hello", "Goodbye", "Sorry"]
+# words = KeyWords
+# for i, KeyWords in enumerate(KeyWords):
+#     words[i] = sourceTranslate(KeyWords, "en", "zh-tw")
 
-print(words)
-# urls = CSESearch(KeyWords, "en")
-# URLOutput = TopFiveCommon(urls)
-# print(URLOutput)
+# print(words)
+# # urls = CSESearch(KeyWords, "en")
+
+urls = ["h", "k", "d", "d", ""]
+URLOutput = TopFiveCommon(urls)
+print(URLOutput)
 
