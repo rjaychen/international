@@ -9,13 +9,12 @@ kw_model = KeyBERT()
 
 def frequency_filter_stopwords(text_pathname: str) -> list:
     list_of_keywords = []
-    with open(text_pathname) as f:
-        transcript = f.read()
     stop_words = set(stopwords.words('english'))
     stop_words.add(",")
     stop_words.add(".")
     stop_words.add("ok")
     stop_words.add(".")
+    transcript = text_pathname
     transcript = transcript.lower()
     word_tokens = word_tokenize(transcript)
     filtered_sentence = [w for w in word_tokens if not w.lower() in stop_words]
