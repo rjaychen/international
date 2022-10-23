@@ -12,7 +12,7 @@ def CSESearch(Queries, Language):
     
     urls = []
     for k in Queries:
-        API_KEY = "AIzaSyBPbbZVAapo_FQh_SnlUBFJhPLKQ_ya-AU"
+        API_KEY = "AIzaSyDVHQfs8dVQJ-XzVz8fEYTl1jLPNF-dd0U"
 
         query = k
 

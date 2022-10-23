@@ -3,6 +3,7 @@ from flask_cors import CORS
 from CSESearch import CSESearch
 from MaxURL import TopFiveCommon
 from frequency_filter import frequency_filter_stopwords
+from google_translate import sourceTranslate
 app = Flask(__name__)
 
 cors = CORS(app)
@@ -12,13 +13,11 @@ cors = CORS(app)
 def postME():
    data = request.get_json()
    
-   print(data)
-
-   keywords = frequency_filter_stopwords(data[0])
-   Allurls = CSESearch(keywords, data[1])
-   urls = TopFiveCommon(Allurls)
+   keywords = frequency_filter_stopwords(data[0]) #Filter out for keywords first
+   #keywords = sourceTranslate(keywords, data[1], data[2]) #Translate the keywords into prefered language
+   Allurls = CSESearch(keywords, data[1])   #Search on Custom Search Engine using hte keywords
+   urls = TopFiveCommon(Allurls) #Find top 5 urls given keyworcs 
    emptystr = ""
-   
    for i in urls:
        emptystr += i
        emptystr += "\n"
