@@ -6,7 +6,7 @@ def TopFiveCommon(urls):
 
     
     topfive = []
-    for i in range(0, len(urls)):
+    for i in range(0, len(urls)-1):
         most_common,num_most_common = Counter(urls).most_common(1+i)[i]
         topfive.append(most_common)
     return topfive
