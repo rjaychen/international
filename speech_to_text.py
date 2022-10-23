@@ -7,7 +7,7 @@ with lecture as source:
     r.adjust_for_ambient_noise(source)
     audio = r.record(source)
 
-print(type(r.recognize_google(audio)))
+r.recognize_google(audio)
 
 
 """"
