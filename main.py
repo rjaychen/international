@@ -12,17 +12,22 @@ cors = CORS(app)
 @app.route("/receiver", methods=["POST"])
 def postME():
    data = request.get_json()
-   
    keywords = frequency_filter_stopwords(data[0]) #Filter out for keywords first
-   #keywords = sourceTranslate(keywords, data[1], data[2]) #Translate the keywords into prefered language
-   Allurls = CSESearch(keywords, data[1])   #Search on Custom Search Engine using hte keywords
-   urls = TopFiveCommon(Allurls) #Find top 5 urls given keyworcs 
-   emptystr = ""
-   for i in urls:
-       emptystr += i
-       emptystr += "\n"
+
+   #keywords 
+   print(data[2])
+   #Translation function
+   Translatedwords = keywords
+   for i, keywords in enumerate(keywords):
+      Translatedwords[i] = sourceTranslate(keywords, data[1], data[2])
+
+   keywords = Translatedwords
+   #print(keywords)
    
-   data[0] = emptystr
+   Allurls = CSESearch(keywords, data[2])   #Search on Custom Search Engine using the keywords
+   urls = TopFiveCommon(Allurls) #Find top 5 urls given keyworcs 
+   
+   data = urls
    print(data)
    data = jsonify(data)
    return data

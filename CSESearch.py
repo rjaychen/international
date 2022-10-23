@@ -12,7 +12,7 @@ def CSESearch(Queries, Language):
     
     urls = []
     for k in Queries:
-        API_KEY = "AIzaSyDVHQfs8dVQJ-XzVz8fEYTl1jLPNF-dd0U"
+        API_KEY = "AIzaSyB3aPJY0-QipT4E4b8YlBrEEBjnCUTf37U"
 
         query = k
 
@@ -23,10 +23,17 @@ def CSESearch(Queries, Language):
         start = (page - 1) * 10 + 1
         url = f"https://www.googleapis.com/customsearch/v1?key={API_KEY}&cx={SEARCH_ENGINE_ID}&q={query}&start={start}"
 
+        
         data = requests.get(url).json()
         # get the result items
         search_items = data.get("items")
         # iterate over 5 results found
+        
+        #Check for empty search results
+        if search_items is None:
+            urls.append("None")
+            break
+        
         for i, search_item in enumerate(search_items, start=1):
             try:
                 long_description = search_item["pagemap"]["metatags"][0]["og:description"]
