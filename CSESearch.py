@@ -24,11 +24,9 @@ def CSESearch(Queries, Language):
         url = f"https://www.googleapis.com/customsearch/v1?key={API_KEY}&cx={SEARCH_ENGINE_ID}&q={query}&start={start}"
 
         data = requests.get(url).json()
-        print(data)
         # get the result items
         search_items = data.get("items")
         # iterate over 5 results found
-        print(search_items)
         for i, search_item in enumerate(search_items, start=1):
             try:
                 long_description = search_item["pagemap"]["metatags"][0]["og:description"]
