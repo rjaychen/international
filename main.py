@@ -52,5 +52,4 @@ language = "en"
 urls = CSESearch(searchquotes, language)
 URLOutput = TopFiveCommon(urls)
 
-
 print(URLOutput)
