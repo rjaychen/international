@@ -5,3 +5,4 @@ https://developers.google.com/custom-search/v1/introduction
 
 [Devpost Link](https://devpost.com/software/noto-notes-together)
 
+View the original project repo @AntiRhythm/international
